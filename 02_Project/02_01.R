@@ -1,0 +1,30 @@
+x <- c(
+    0.324,
+    0.177,
+    0.163,
+    0.317,
+    0.174,
+    0.321,
+    0.115,
+    0.108,
+    0.133
+)
+
+n <- 10
+a <- n
+xMin <- 0.1
+
+b <- 0; for (i in 1:length(x)) {
+    b <- b + log(x[i])
+}; b <- b - n*log(xMin)
+
+aGam <- factorial(a-1)
+
+dist <- 0
+trials <- 1000
+
+for (y in 1:trials) {
+    dist[y] <- (b^a) / (aGam * y)
+}
+
+plot(dist, log="x", type='l')
